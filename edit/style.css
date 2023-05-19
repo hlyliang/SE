@@ -1,0 +1,236 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+}
+
+header {
+    background-color: #d2b48c;
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header h1 {
+    color: #fff;
+    font-size: 24px;
+}
+
+.home-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    transition: transform 0.3s;
+}
+
+.home-button i {
+    font-size: 24px;
+    color: #ffffff;
+    transition: color 0.3s;
+}
+
+.home-button:hover i {
+    color: #a8a7a6;
+}
+
+
+
+.edit-section,
+.add-section {
+    background-color: #fff;
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 600px;
+    border-radius: 5px;
+}
+
+.image-upload {
+    margin-bottom: 20px;
+}
+
+.image-upload .image-preview {
+    max-width: 100%;
+    max-height: 370px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.image-upload .image-preview img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+
+.image-upload .image-upload-button {
+    padding: 8px 16px;
+    background-color: #d2b48c;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.image-upload .image-upload-button:hover {
+    background-color: #c1a978;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="number"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.common-button {
+    padding: 10px 20px;
+    background-color: #d2b48c;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.common-button:hover {
+    background-color: #c1a978;
+}
+
+
+
+.edit-section h2,
+.add-section h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.product-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: 20px;
+}
+
+.product-item {
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.product-item .product-info {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.product-item .product-info img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+.product-item .product-info h3 {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.product-item .product-info p {
+    margin: 0;
+}
+
+.edit-button,
+.remove-button {
+    padding: 5px 10px;
+    background-color: #d2b48c;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 14px;
+}
+
+.edit-button:not(:last-child) {
+    margin-right: 5px;
+}
+
+.edit-button:hover,
+.remove-button:hover {
+    background-color: #c1a978;
+}
+
+.add-section form {
+    margin-top: 20px;
+}
+
+.add-section .form-group {
+    margin-bottom: 10px;
+}
+
+.add-section label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+.add-section input[type="file"],
+.add-section input[type="text"],
+.add-section textarea,
+.add-section input[type="number"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.add-section button[type="submit"] {
+    padding: 8px 16px;
+    background-color: #d2b48c;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.add-section button[type="submit"]:hover {
+    background-color: #c1a978;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>登入系統</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <script src="main.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="title-container">
+            <h2>展演藝術訂票系統</h2>
+        </div>
+        <div class="form-container">
+            <div id="loginDiv" style="display: block;">
+                <h1>登入</h1>
+                <div class="input-group">
+                    <label for="loginEmail"></label>
+                    <input type="email" id="loginEmail" placeholder="請輸入電子郵件">
+                </div>
+                <div class="input-group">
+                    <label for="loginPassword"></label>
+                    <input type="password" id="loginPassword" placeholder="請輸入密碼">
+                    <i id="toggleLoginPassword" class="fas fa-eye input-group-eye"
+                        onclick="togglePasswordVisibility('loginPassword', 'toggleLoginPassword')"></i>
+                </div>
+                <p id="loginMessage"></p>
+                <button onclick="login()">登入</button>
+                <p>尚未註冊？<a href="#" onclick="showRegistrationForm()">註冊</a></p>
+            </div>
+
+            <!-- ... -->
+            <div id="registerDiv" style="display: none;">
+                <h1>註冊</h1>
+                <div class="input-group">
+                    <label for="registerUsername"></label>
+                    <input type="text" id="registerUsername" placeholder="請輸入使用者名稱">
+                </div>
+                <div class="input-group">
+                    <label for="registerEmail"></label>
+                    <input type="email" id="registerEmail" placeholder="請輸入電子郵件">
+                </div>
+                <div class="input-group">
+                    <label for="registerPassword"></label>
+                    <input type="password" id="registerPassword" placeholder="請輸入密碼">
+                    <i id="toggleRegisterPassword" class="fas fa-eye input-group-eye"
+                        onclick="togglePasswordVisibility('registerPassword', 'toggleRegisterPassword')"></i>
+                </div>
+                <div class="input-group">
+                    <label for="confirmPassword"></label>
+                    <input type="password" id="confirmPassword" placeholder="請再次輸入密碼">
+                    <i id="toggleConfirmPassword" class="fas fa-eye input-group-eye"
+                        onclick="togglePasswordVisibility('confirmPassword', 'toggleConfirmPassword')"></i>
+                </div>
+                <button onclick="register()">註冊</button>
+                <p class="message" id="registerMessage"></p>
+                <p class="link">已經有帳號？<a href="#" onclick="showLoginForm()">登入</a></p>
+            </div>
+            <!-- ... -->
+
+        </div>
+    </div>
+
+    <div id="registrationSuccessDiv" class="popup" style="display: none;">
+        <p>註冊成功！請使用新帳號登入</p>
+    </div>
+</body>
+
+</html>

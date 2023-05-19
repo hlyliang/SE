@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        integrity="sha512-..." crossorigin="anonymous" />
+    <title>購物車</title>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <h1>購物車</h1>
+            <button id="home-button" class="home-button"><i class="fas fa-home"></i></button>
+        </div>
+    </header>
+
+    <section class="cart-items">
+        <div class="container">
+            <div id="cart-items"></div>
+            <div class="cart-summary">
+                <div class="total-price" id="total-price"></div>
+            </div>
+            <div class="cart-buttons">
+                <button class="clear-cart-button" onclick="clearCart()">清空購物車</button>
+                <button class="checkout-button" onclick="checkout()">結帳</button>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>版權所有 © 2023 展演藝術訂票系統</p>
+        </div>
+    </footer>
+
+    <div id="latestShowcaseContainer"></div>
+
+    <script src="main.js" defer></script>
+</body>
+
+</html>

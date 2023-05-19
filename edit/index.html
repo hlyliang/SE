@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        integrity="sha512-..." crossorigin="anonymous" />
+    <title>商品管理</title>
+</head>
+
+<body>
+    <header>
+        <h1>商品管理</h1>
+        <button id="home-button" class="home-button"><i class="fas fa-home"></i></button>
+    </header>
+
+    <section class="edit-section">
+        <h2>編輯商品資訊</h2>
+        <div class="product-list">
+            <!-- 商品列表內容 -->
+        </div>
+        <form id="edit-product-form" style="display: none;">
+            <input type="hidden" id="edit-product-index">
+            <div class="form-group">
+                <label for="edit-product-image">商品照片：</label>
+                <div class="image-upload">
+                    <div class="image-preview" id="edit-product-image-preview"></div>
+                    <input type="file" id="edit-product-image" accept="image/*">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="edit-product-name">商品名稱：</label>
+                <input type="text" id="edit-product-name" required>
+            </div>
+            <div class="form-group">
+                <label for="edit-product-quantity">商品數量：</label>
+                <input type="number" id="edit-product-quantity" min="1" required>
+            </div>
+            <div class="form-group">
+                <label for="edit-product-price">商品價格：</label>
+                <input type="number" id="edit-product-price" min="0" step="0.01" required>
+            </div>
+            <button type="submit" class="common-button">更新商品</button>
+        </form>
+
+    </section>
+
+    <section class="add-section">
+        <h2>上架新商品</h2>
+        <form id="add-product-form">
+            <div class="form-group">
+                <label for="product-image">商品照片：</label>
+                <input type="file" id="product-image" accept="image/*" required>
+            </div>
+            <div class="form-group">
+                <label for="product-name">商品名稱：</label>
+                <input type="text" id="product-name" required>
+            </div>
+            <div class="form-group">
+                <label for="product-quantity">商品數量：</label>
+                <input type="number" id="product-quantity" min="1" required>
+            </div>
+            <div class="form-group">
+                <label for="product-price">商品價格：</label>
+                <input type="number" id="product-price" min="0" step="0.01" required>
+            </div>
+            <button type="submit" class="common-button">上架商品</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>版權所有 © 2023 展演藝術訂票系統</p>
+    </footer>
+
+    <script src="main.js" defer></script>
+</body>
+
+</html>
