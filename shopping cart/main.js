@@ -1,7 +1,6 @@
 // 購物車頁面
 
 var cart = JSON.parse(localStorage.getItem("cart")) || [];
-var products = JSON.parse(localStorage.getItem("products")) || [];
 var defaultProductsString = localStorage.getItem("defaultProducts");
 var defaultProducts = defaultProductsString ? JSON.parse(defaultProductsString) : [];
 
@@ -32,31 +31,12 @@ function displayCartItems() {
             var quantityPrice = document.createElement("div");
             quantityPrice.className = "item-quantity-price";
             var quantity = document.createElement("span");
-            quantity.textContent = "數量: ";
-            var decreaseButton = document.createElement("button");
-            decreaseButton.textContent = "-";
-            decreaseButton.addEventListener("click", function () {
-                decreaseQuantity(index);
-            });
-            var quantityInput = document.createElement("input");
-            quantityInput.id = "quantity-input-" + index;
-            quantityInput.type = "number";
-            quantityInput.value = item.quantity;
-            quantityInput.min = 1;
-            quantityInput.max = getProductQuantity(item.name); // 使用商品的上架数量
-            var increaseButton = document.createElement("button");
-            increaseButton.textContent = "+";
-            increaseButton.addEventListener("click", function () {
-                increaseQuantity(index);
-            });
-            quantityPrice.appendChild(decreaseButton);
-            quantityPrice.appendChild(quantityInput);
-            quantityPrice.appendChild(increaseButton);
+            quantity.textContent = "購買數量: " + item.quantity; // 顯示購買數量
             var price = document.createElement("span");
             price.className = "item-price";
             price.textContent = "價格: $" + item.price;
             infoDiv.appendChild(name);
-            infoDiv.appendChild(quantityPrice);
+            infoDiv.appendChild(quantity);
             infoDiv.appendChild(price);
             itemDiv.appendChild(infoDiv);
 
@@ -78,6 +58,7 @@ function decreaseQuantity(index) {
     if (newQuantity >= 1) {
         quantityInput.value = newQuantity;
         item.quantity = newQuantity;
+        updateCartItems();
         displayCartItems();
     }
 }
@@ -90,6 +71,7 @@ function increaseQuantity(index) {
     if (newQuantity <= productQuantity) {
         quantityInput.value = newQuantity;
         item.quantity = newQuantity;
+        updateCartItems();
         displayCartItems();
     }
 }
@@ -106,6 +88,7 @@ function updateQuantity(index, newQuantity) {
         }
     }
     cart[index].quantity = quantity;
+    updateCartItems();
     displayCartItems();
 }
 
@@ -181,6 +164,11 @@ function updateDefaultProductsFromLocalStorage() {
     }
 }
 
+function getDefaultProductByName(productName) {
+    return defaultProducts.find(function (item) {
+        return item.name === productName;
+    });
+}
 
 function init() {
     displayCartItems();

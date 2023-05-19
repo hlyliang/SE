@@ -34,7 +34,6 @@ header h1 {
     font-size: 24px;
 }
 
-
 .home-button {
     background-color: transparent;
     border: none;
@@ -52,7 +51,6 @@ header h1 {
 .home-button:hover i {
     color: #a8a7a6;
 }
-
 
 .cart-items {
     background-color: #f9f9f9;
@@ -90,6 +88,7 @@ header h1 {
     flex: 1;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 .item-name {
@@ -101,25 +100,15 @@ header h1 {
     color: #555;
 }
 
-.item-quantity {
+.item-quantity-price {
     display: flex;
     align-items: center;
+    gap: 5px;
 }
 
-.quantity-input {
-    width: 30px;
-    height: 30px;
-    padding: 0;
-    border: 1px solid #f79999;
-    border-radius: 50%;
-    text-align: center;
-    font-size: 14px;
-    transition: border-color 0.3s;
-}
-
-.quantity-input:focus {
-    outline: none;
-    border-color: #ff5a5f;
+.quantity-label {
+    font-weight: bold;
+    white-space: nowrap;
 }
 
 .cart-summary {
@@ -174,22 +163,6 @@ header h1 {
 
 .clear-cart-button:hover {
     background-color: rgba(0, 0, 0, 0.8);
-}
-
-.quantity-input {
-    width: 30px;
-    height: 30px;
-    padding: 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    text-align: center;
-    font-size: 14px;
-    transition: border-color 0.3s;
-}
-
-.quantity-input:focus {
-    outline: none;
-    border-color: #ff5a5f;
 }
 
 footer {

@@ -62,7 +62,7 @@ function displayLatestProducts() {
     var latestShowcaseContainer = document.getElementById("latestShowcaseContainer");
     latestShowcaseContainer.innerHTML = "";
 
-    var allProducts = defaultProducts.concat(cartProducts, addedProducts);
+    var allProducts = defaultProducts.concat(addedProducts);
 
     for (var i = 0; i < allProducts.length; i++) {
         var product = allProducts[i];
