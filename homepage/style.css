@@ -43,6 +43,7 @@ header .container {
 .right-section {
     display: flex;
     align-items: center;
+    gap: 10px;
 }
 
 .right-section button {
@@ -52,6 +53,15 @@ header .container {
     border: none;
     cursor: pointer;
     transition: background-color 0.3s;
+    padding: 8px 10px;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1px;
+    border-radius: 20px;
+}
+
+.right-section button:not(:last-child) {
+    margin-right: 10px;
 }
 
 .right-section button:hover {
@@ -72,14 +82,26 @@ header .container {
     background-color: rgba(255, 255, 255, 0.2);
 }
 
-.search-container .search-button {
+.search-container input[type="date"] {
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    margin-right: 10px;
+    background-color: rgba(255, 255, 255, 0.2);
+    width: 200px;
+    /* 調整寬度以適應日期選擇 */
+}
+
+
+.search-button {
     background-color: transparent;
     border: none;
     cursor: pointer;
     padding: 0;
+    margin-left: 10px;
 }
 
-.search-container .search-button i {
+.search-button i {
     color: #fff;
     font-size: 20px;
 }
@@ -236,40 +258,35 @@ header .container {
     height: 40px;
 }
 
-.edit-button {
-    padding: 8px 10px;
-    background-color: rgba(0, 0, 0, 0.6);
+.edit-button,
+.common-button,
+.random-button,
+.logout-button,
+.search-button {
+    height: 40px;
+    background-color: transparent;
     color: #fff;
     border: none;
-    border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
+    padding: 8px 10px;
     text-transform: uppercase;
     font-weight: bold;
     letter-spacing: 1px;
-    height: 40px;
+    border-radius: 20px;
 }
 
-.common-button {
-    padding: 8px 10px;
-    background-color: rgba(0, 0, 0, 0.6);
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    text-transform: uppercase;
-    font-weight: bold;
-    letter-spacing: 1px;
-    height: 40px;
-}
-
-.common-button:not(:last-child) {
+.edit-button:not(:last-child),
+.common-button:not(:last-child),
+.random-button:not(:last-child),
+.logout-button:not(:last-child),
+.search-button:not(:last-child) {
     margin-right: 10px;
 }
 
 .edit-button:hover,
 .common-button:hover,
+.random-button:hover,
 .logout-button:hover,
 .search-button:hover {
     background-color: rgba(0, 0, 0, 0.8);
@@ -341,8 +358,10 @@ footer p {
     margin: 10% auto;
     padding: 20px;
     border-radius: 5px;
-    max-width: 600px;
+    max-width: 700px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-weight: bold;
+    /* 将文本设置为粗体 */
 }
 
 .close-button {
@@ -355,10 +374,11 @@ footer p {
 
 .product-info {
     display: flex;
+    align-items: center;
 }
 
 .product-image img {
-    max-width: 300px;
+    max-width: 400px;
     height: auto;
     object-fit: contain;
     border-radius: 5px;
@@ -373,18 +393,39 @@ footer p {
 }
 
 .product-details h2 {
-    font-size: 20px;
+    font-size: 24px;
     margin-bottom: 10px;
 }
 
 .product-price,
-.product-quantity,
-.add-to-cart-button {
+.product-date,
+.product-quantity {
     margin-top: 10px;
 }
 
-.product-price span {
+.product-price span,
+.product-date span,
+.product-quantity span {
     font-weight: bold;
+}
+
+.product-price {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.product-date {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.product-quantity {
+    font-size: 14px;
+}
+
+.product-quantity label {
+    font-size: 16px;
+    margin-right: 10px;
 }
 
 .product-quantity input {
@@ -404,8 +445,28 @@ footer p {
     transition: background-color 0.3s;
     font-size: 16px;
     font-weight: bold;
+    margin-top: 10px;
 }
 
 .add-to-cart-button:hover {
     background-color: #c1a978;
+}
+
+@media (max-width: 768px) {
+    .product-info {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .product-image img {
+        margin-bottom: 20px;
+    }
+
+    .product-details {
+        align-items: flex-start;
+    }
+
+    .product-quantity input {
+        width: 40px;
+    }
 }

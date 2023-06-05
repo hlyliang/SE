@@ -137,6 +137,28 @@ function checkout() {
     }
 }
 
+var discountApplied = false;
+
+function applyDiscountCode() {
+    if (!discountApplied) {
+        var discountCodeInput = prompt("請輸入折扣碼：");
+        if (discountCodeInput === "web123") {
+            for (var i = 0; i < cart.length; i++) {
+                var item = cart[i];
+                item.price = item.price * 0.9; // 打九折
+            }
+            updateCartItems();
+            displayCartItems();
+            discountApplied = true;
+            alert("折扣已應用！");
+        } else {
+            alert("無效的折扣碼！");
+        }
+    }
+    else {
+        alert("折扣碼已應用！");
+    }
+}
 function updateDefaultProductQuantities(purchasedItems) {
     for (var i = 0; i < purchasedItems.length; i++) {
         var purchasedItem = purchasedItems[i];

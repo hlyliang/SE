@@ -213,3 +213,23 @@ hr {
 .checkout-button {
     margin-left: 10px;
 }
+
+/* 添加折扣碼樣式 */
+.discount-button {
+    margin-top: 20px;
+    margin-right: 20px;
+    padding: 8px 10px;
+    background-color: #5f9ea0;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.discount-button:hover {
+    background-color: #4682b4;
+}

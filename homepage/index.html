@@ -7,6 +7,38 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
         integrity="sha512-..." crossorigin="anonymous" />
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        var players = [];
+
+        function onYouTubeIframeAPIReady() {
+            var slides = document.querySelectorAll(".slide");
+
+            for (var i = 0; i < slides.length; i++) {
+                var slide = slides[i];
+                var iframe = slide.querySelector("iframe");
+
+                players[i] = new YT.Player(iframe, {
+                    events: {
+                        onReady: onYouTubePlayerReady
+                    }
+                });
+            }
+        }
+
+        function onYouTubePlayerReady(event) {
+            var player = event.target;
+
+            player.addEventListener("mouseover", function () {
+                player.pauseVideo();
+            });
+
+            player.addEventListener("mouseout", function () {
+                player.playVideo();
+            });
+        }
+    </script>
     <script src="main.js" defer></script>
     <title>展演藝術訂票系統</title>
 </head>
@@ -19,9 +51,12 @@
             </div>
             <div class="right-section">
                 <div class="search-container">
+                    <button class="game-button" onclick="goToGamePage()"><i class="fas fa-gamepad"></i> Game</button>
+                    <button class="random-button" onclick="randomProduct()"><i class="fas fa-random"></i> 隨機商品</button>
                     <button class="edit-button" onclick="editProduct()"><i class="fas fa-edit"></i> 編輯商品</button>
                     <button class="common-button" onclick="goToCartPage()"><i class="fas fa-shopping-cart"></i></button>
-                    <input type="text" placeholder="搜尋商品">
+                    <input type="text" id="search-input" placeholder="搜尋商品">
+                    <input type="date" id="date-input" onchange="filterProducts()">
                     <button class="search-button" onclick="search()"><i class="fas fa-search"></i></button>
                 </div>
                 <button class="logout-button" onclick="logout()">LOGOUT</button>
@@ -32,22 +67,34 @@
     <section class="slideshow">
         <div class="slide-wrapper">
             <div class="slide active">
-                <img src="image/image1.jpg" alt="Product Image">
+                <iframe id="youtube-player1" width="560" height="315" src="https://www.youtube.com/embed/E0JxDffw9J8"
+                    frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
             </div>
             <div class="slide">
-                <img src="image/image2.jpg" alt="Product Image">
+                <iframe id="youtube-player2" width="560" height="315" src="https://www.youtube.com/embed/qg8vNx_jQYU"
+                    frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
             </div>
             <div class="slide">
-                <img src="image/image3.jpg" alt="Product Image">
+                <iframe id="youtube-player3" width="560" height="315" src="https://www.youtube.com/embed/lUusUqBiWlc"
+                    frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
             </div>
             <div class="slide">
-                <img src="image/image4.jpg" alt="Product Image">
+                <iframe id="youtube-player4" width="560" height="315" src="https://www.youtube.com/embed/dJAt3SfnA3w"
+                    frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
             </div>
             <div class="slide">
-                <img src="image/image5.jpg" alt="Product Image">
+                <iframe id="youtube-player5" width="560" height="315" src="https://www.youtube.com/embed/huGat5PO0lM"
+                    frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
             </div>
             <div class="slide">
-                <img src="image/image6.jpg" alt="Product Image">
+                <iframe id="youtube-player6" width="560" height="315" src="https://www.youtube.com/embed/tPCze-1SvEw"
+                    frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
             </div>
         </div>
         <div class="controls">
@@ -60,6 +107,7 @@
         <div class="container">
             <h2>全部商品</h2>
             <div class="showcase-container" id="latestShowcaseContainer"></div>
+            <div class="showcase-container" id="randomProductContainer"></div>
         </div>
     </section>
 
@@ -73,14 +121,17 @@
                 <div class="product-details">
                     <h2 id="product-name"></h2>
                     <div class="product-price">
-                        價格: $<span id="product-price"></span>
+                        <span>價格:</span>
+                        <span id="product-price"></span>
                     </div>
+                    <div class="product-date" id="product-date"></div>
                     <div class="product-quantity">
                         <label for="quantity-input">數量:</label>
                         <input type="number" id="quantity-input" min="1" value="1">
                     </div>
                     <button class="add-to-cart-button" onclick="addToCart()">加入購物車</button>
                 </div>
+
             </div>
         </div>
     </div>
@@ -90,6 +141,41 @@
             <p>版權所有 © 2023 展演藝術訂票系統</p>
         </div>
     </footer>
+
+    <script>
+        function onYouTubeIframeAPIReady() {
+            initializeYouTubePlayer();
+        }
+
+        function initializeYouTubePlayer() {
+            // 初始化 YouTube 播放器
+            var slides = document.querySelectorAll(".slide");
+
+            for (var i = 0; i < slides.length; i++) {
+                var slide = slides[i];
+                var iframe = slide.querySelector("iframe");
+
+                players[i] = new YT.Player(iframe, {
+                    events: {
+                        onReady: onYouTubePlayerReady
+                    }
+                });
+            }
+        }
+
+        function onYouTubePlayerReady(event) {
+            var player = event.target;
+
+            player.addEventListener("mouseover", function () {
+                player.pauseVideo();
+            });
+
+            player.addEventListener("mouseout", function () {
+                player.playVideo();
+            });
+        }
+    </script>
+
 </body>
 
 </html>

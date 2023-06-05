@@ -41,7 +41,8 @@ function displayProductList() {
         <img src="${product.image}" alt="Product Image">
         <h3>${product.name}</h3>
         <p>價格: $${product.price}</p>
-        <p>數量: ${product.quantity}</p>`;
+        <p>數量: ${product.quantity}</p>
+        <p>演出日期: ${product.date}</p>`;
 
         // 編輯商品按鈕
         var editButton = document.createElement("button");
@@ -95,6 +96,7 @@ function showEditForm(index, productImage) {
     var editProductName = document.getElementById("edit-product-name");
     var editProductQuantity = document.getElementById("edit-product-quantity");
     var editProductPrice = document.getElementById("edit-product-price");
+    var editProductDate = document.getElementById("edit-product-date");
 
     // 填充商品資訊到編輯表單
     var product = products[index];
@@ -102,6 +104,7 @@ function showEditForm(index, productImage) {
     editProductName.value = product.name;
     editProductQuantity.value = product.quantity;
     editProductPrice.value = product.price;
+    editProductDate.value = product.date;
 
     // 清空圖片預覽容器
     editProductImagePreview.innerHTML = "";
@@ -184,10 +187,12 @@ document.getElementById("add-product-form").addEventListener("submit", function 
         var productName = document.getElementById("product-name").value;
         var productQuantity = parseInt(document.getElementById("product-quantity").value);
         var productPrice = parseFloat(document.getElementById("product-price").value);
+        var productDate = document.getElementById("product-date").value;
 
         // 創建新商品
         var newProduct = {
             name: productName,
+            date: productDate,
             price: productPrice,
             image: imageDataUrl,
             quantity: productQuantity,
@@ -202,6 +207,7 @@ document.getElementById("add-product-form").addEventListener("submit", function 
         document.getElementById("product-name").value = "";
         document.getElementById("product-quantity").value = "";
         document.getElementById("product-price").value = "";
+        document.getElementById("product-date").value = "";
 
         // 將更新後的商品列表保存到本地存儲
         localStorage.setItem("products", JSON.stringify(products));
@@ -218,10 +224,13 @@ document.getElementById("edit-product-form").addEventListener("submit", function
     var editProductName = document.getElementById("edit-product-name").value;
     var editProductQuantity = parseInt(document.getElementById("edit-product-quantity").value);
     var editProductPrice = parseFloat(document.getElementById("edit-product-price").value);
+    var editProductDate = document.getElementById("edit-product-date").value;
+
 
     // 更新商品資訊
     var editedProduct = {
         name: editProductName,
+        date: editProductDate,
         price: editProductPrice,
         quantity: editProductQuantity,
     };
