@@ -135,9 +135,23 @@ function displayLatestProducts() {
 function createShowcaseItem(product, index, container) {
     var showcaseItem = document.createElement("div");
     showcaseItem.className = "showcase-item";
-    var originalIndex = defaultProducts.findIndex(function (p) {
+
+    var originalIndex = -1;
+
+    // 先從 defaultProducts 中尋找索引
+    originalIndex = defaultProducts.findIndex(function (p) {
         return p.name === product.name && p.date === product.date;
     });
+
+    // 如果在 defaultProducts 中找不到索引，再在 addedProducts 中尋找索引
+    if (originalIndex === -1) {
+        originalIndex = addedProducts.findIndex(function (p) {
+            return p.name === product.name && p.date === product.date;
+        });
+        originalIndex += defaultProducts.length;
+    }
+
+    // 設定 onclick 屬性，傳遞 originalIndex 作為參數
     showcaseItem.setAttribute("onclick", `showProductInfo(${originalIndex})`);
 
     var productImage = document.createElement("img");
@@ -161,6 +175,7 @@ function createShowcaseItem(product, index, container) {
 
 
 
+
 function showProductInfo(productIndex) {
     var product;
     if (productIndex < defaultProducts.length) {
@@ -172,9 +187,9 @@ function showProductInfo(productIndex) {
     var modal = document.getElementById("product-info-modal");
     var productImage = document.getElementById("product-image");
     var nameElement = document.getElementById("product-name");
-    var priceElement = document.getElementById("product-price");
+    var priceElement = document.getElementById("product-price-value"); // 修改為不重複的 id
     var quantityInput = document.getElementById("quantity-input");
-    var dateElement = document.getElementById("product-date");
+    var dateElement = document.getElementById("product-date-value"); // 修改為不重複的 id
 
     productImage.src = product.image;
     nameElement.textContent = product.name;

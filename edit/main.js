@@ -101,6 +101,7 @@ function showEditForm(index, productImage) {
     // 填充商品資訊到編輯表單
     var product = products[index];
     editProductIndex.value = index;
+    //editProductImage.value = productImage
     editProductName.value = product.name;
     editProductQuantity.value = product.quantity;
     editProductPrice.value = product.price;
@@ -189,12 +190,12 @@ document.getElementById("add-product-form").addEventListener("submit", function 
         var productPrice = parseFloat(document.getElementById("product-price").value);
         var productDate = document.getElementById("product-date").value;
 
-        // 創建新商品
+        // 创建新商品
         var newProduct = {
             name: productName,
             date: productDate,
             price: productPrice,
-            image: imageDataUrl,
+            image: imageDataUrl, // 将图像URL保存到新商品对象的image属性中
             quantity: productQuantity,
         };
 
@@ -202,16 +203,17 @@ document.getElementById("add-product-form").addEventListener("submit", function 
 
         displayProductList();
 
-        // 清空表單輸入
+        // 清空表单输入
         fileInput.value = "";
         document.getElementById("product-name").value = "";
         document.getElementById("product-quantity").value = "";
         document.getElementById("product-price").value = "";
         document.getElementById("product-date").value = "";
 
-        // 將更新後的商品列表保存到本地存儲
+        // 将更新后的商品列表保存到本地存储
         localStorage.setItem("products", JSON.stringify(products));
     };
+
 
     reader.readAsDataURL(productImage);
 });
