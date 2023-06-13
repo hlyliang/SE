@@ -212,7 +212,7 @@ function closeProductInfo() {
 function addToCart() {
     var product = {
         name: document.getElementById("product-name").textContent,
-        price: parseFloat(document.getElementById("product-price").textContent),
+        price: document.getElementById("product-price-value").textContent,
         quantity: parseInt(document.getElementById("quantity-input").value),
         image: document.getElementById("product-image").src
     };
@@ -273,6 +273,7 @@ function showSuccessMessage() {
 function goToCartPage() {
     window.location.href = "../shopping cart/index.html";
 }
+
 
 function logout() {
     localStorage.clear();
